@@ -6,6 +6,7 @@ import java.util.List;
 public class CellController {
 	private Cell[][] cells;
 	private int maxX, maxY;
+	private long generation;
 	private List<CellsListener> listeners = new ArrayList<CellsListener>();
 
 	public CellController(int x, int y){
@@ -28,6 +29,7 @@ public class CellController {
 				cells[i][j].reload();
 			}
 		}
+		generation++;
 		cellsChange();
 	}
 	public void cellsChange(){
@@ -36,12 +38,17 @@ public class CellController {
 	}
 	
 	public void reset(){
+		generation=0;
 		for(int i=0;i<maxX;i++){
 			for(int j=0;j<maxY;j++){
 				cells[i][j] = new Cell();
 			}
 		}
 		cellsChange();
+	}
+	
+	public long getGeneration(){
+		return generation;
 	}
 	
 	public int getSizeX(){

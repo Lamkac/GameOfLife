@@ -18,7 +18,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
 import javax.swing.JSeparator;
 
-public class SettingPanel extends JPanel implements ActionListener, ChangeListener {
+public class SettingPanel extends JPanel implements ActionListener, ChangeListener, CellsListener {
 
 	private CellController cc;
 	private DrawPanel dp;
@@ -28,6 +28,7 @@ public class SettingPanel extends JPanel implements ActionListener, ChangeListen
 	private JSlider sliderSize;
 	private JLabel lblGridSize;
 	private JCheckBox chckbxGrid;
+	private JLabel lblGeneration;
 	/**
 	 * Create the panel.
 	 */
@@ -77,7 +78,12 @@ public class SettingPanel extends JPanel implements ActionListener, ChangeListen
 		chckbxGrid.setSelected(true);
 		chckbxGrid.setBounds(136, 63, 54, 23);
 		add(chckbxGrid);
+		
+		lblGeneration = new JLabel("Generation: 0");
+		lblGeneration.setBounds(10, 123, 180, 14);
+		add(lblGeneration);
 
+		cc.addListener(this);
 	}
 	public void actionPerformed(ActionEvent e){
 		switch(e.getActionCommand()){
@@ -111,5 +117,9 @@ public class SettingPanel extends JPanel implements ActionListener, ChangeListen
 			lblGridSize.setText("Grid size: "+String.valueOf(sliderSize.getValue()));
 			return;
 		}
+	}
+	@Override
+	public void onCellsChange() {
+		lblGeneration.setText("Generation: "+cc.getGeneration());
 	}
 }
