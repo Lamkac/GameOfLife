@@ -41,12 +41,6 @@ public class CellController {
 				cells[i][j] = new Cell();
 			}
 		}
-		/*for(int i=0;i<maxX;i++){
-			for(int j=0;j<maxY;j++){
-				if(i==0||j==0||i==maxX-1||j==maxY-1||(i%10)==0&&(j%10)==0)
-					cells[i][j].live=true;
-			}
-		}*/
 		cellsChange();
 	}
 	

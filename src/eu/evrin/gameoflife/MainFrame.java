@@ -10,9 +10,6 @@ public class MainFrame {
 
 	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -26,16 +23,10 @@ public class MainFrame {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public MainFrame() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		CellController cc = new CellController(10,10);
 		
